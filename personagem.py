@@ -7,6 +7,7 @@ class Personagem(object):
     self.defesa = defesa
     self.capacidade = capacidade
     self.moedas = moedas
+    self.mao = None
     self.inventario = []
     
   def imprimir_personagem(self):
@@ -33,9 +34,18 @@ class Personagem(object):
     else:
       return False
 
+  def calcula_dano_ataque(self):
+    if self.mao is not None:
+      if self.mao.ataque is not None:
+        return self.ataque + self.mao.ataque
+
+    return self.ataque
+
   def calcula_peso_atual(self):
     peso = 0
     for item in self.inventario:
       peso = peso + item.peso
     
     return peso
+
+  
